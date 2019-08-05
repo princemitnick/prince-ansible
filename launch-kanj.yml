@@ -20,8 +20,11 @@
 
   - name: copy structure.sql to servers
     copy: 
-      src: ./id-structure.sql
+      src: ./{{ item }}
       dest: /opt/kanj/
+    with_item:
+      - ./id-structure.sql
+      - ./insert-structure.sql
   
   - name: insert id structure to database
     shell: bash /opt/kanj/insert-structure.sh
