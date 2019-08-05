@@ -17,3 +17,14 @@
         - "/opt/hms/mysql:/var/lib/mysql"
       published_ports:
         - "3307:3306"
+
+  - name: copy structure.sql to servers
+    copy: 
+      src: ./id-structure.sql
+      dest: /opt/kanj/
+  
+  - name: insert id structure to database
+    shell: bash /opt/kanj/insert-structure.sh
+    register: insert_result
+  
+  -debug: msg=={{ insert_result }}
