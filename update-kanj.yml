@@ -1,0 +1,11 @@
+---
+- hosts: kanj
+  become: yes
+  tasks:
+    - name: copy script on servers
+      copy:
+        src: ./{{ item }}
+        dest: /opt/kanj/
+      with_items:
+        - update101.sh
+        - update101.sql
