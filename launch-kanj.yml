@@ -27,4 +27,4 @@
     shell: bash /opt/kanj/insert-structure.sh
     register: insert_result
   
-  -debug: msg=={{ insert_result }}
+  - debug: msg=={{ insert_result }}
