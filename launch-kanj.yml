@@ -22,7 +22,7 @@
     copy: 
       src: ./{{ item }}
       dest: /opt/kanj/
-    with_item:
+    with_items:
       - ./id-structure.sql
       - ./insert-structure.sh
   
