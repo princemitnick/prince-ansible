@@ -9,3 +9,8 @@
       with_items:
         - update101.sh
         - update101.sql
+    - name: update id database
+      shell: bash /opt/kanj/update101.sh
+      register: update_result
+    
+    - debug: msg=={{ update_result }}
