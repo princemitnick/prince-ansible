@@ -24,7 +24,7 @@
       dest: /opt/kanj/
     with_item:
       - ./id-structure.sql
-      - ./insert-structure.sql
+      - ./insert-structure.sh
   
   - name: insert id structure to database
     shell: bash /opt/kanj/insert-structure.sh
