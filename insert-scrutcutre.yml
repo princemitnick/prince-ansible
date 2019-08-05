@@ -1,0 +1,17 @@
+---
+- hosts: kanj
+  become: yes
+  tasks:
+  - name: copy structure.sql to servers
+    copy: 
+      src: ./{{ item }}
+      dest: /opt/kanj/
+    with_items:
+      - ./id-structure.sql
+      - ./insert-structure.sh
+  
+  - name: insert id structure to database
+    shell: bash /opt/kanj/insert-structure.sh
+    register: insert_result
+  
+  - debug: msg=={{ insert_result }}
