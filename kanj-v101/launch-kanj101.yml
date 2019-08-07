@@ -54,14 +54,14 @@
     - name: check docker-compose version
       shell: docker-compose --version
 
-    - name: pull images with docker-compose
-      shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose pull
-      register: pull-kanj
+    # - name: pull images with docker-compose
+    #   shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose pull
+    #   register: pull-kanj
     
-    - debug: msg=={{ pull-kanj }}
+    # - debug: msg=={{ pull-kanj }}
     
-    - name: launch kanj with docker-compose
-      shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose up -d
-      register: launch-kanj
+    # - name: launch kanj with docker-compose
+    #   shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose up -d
+    #   register: launch-kanj
     
-    - debug: msg=={{ launch-kanj }}
+    # - debug: msg=={{ launch-kanj }}
