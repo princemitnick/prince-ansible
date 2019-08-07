@@ -13,15 +13,11 @@
     - name : pull ID
       shell: chdir=/opt/hms/conf/ git clone git@bitbucket.org:zanmilasante/id.git
 
-    # - name: copy files to servers
-    #   copy:
-    #     src: "{{ item.src }}"
-    #     dest: "{{ item.dest}}"
-    #     mode: "{{ item.mode }}"
-    #   with_items:
-    #     - {}
-    #     - {}
-    #     - {}
-
+    - name: copy files to servers
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest}}"
+      with_items:
+        - {src: '/home/ansible/ops/id/', dest: '/opt/hms/conf/'}
 
         
