@@ -11,7 +11,7 @@
         - /home/hms/hms-implementation/
     
     - name : pull ID
-      shell: chdir=/opt/hms/id/ git clone git@bitbucket.org:zanmilasante/id.git
+      shell: chdir=/opt/hms/conf/ git clone git@bitbucket.org:zanmilasante/id.git
 
     # - name: copy files to servers
     #   copy:
