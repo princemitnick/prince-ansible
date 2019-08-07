@@ -10,6 +10,7 @@
         - /opt/hms/conf/
         - /opt/hms/conf/id/
         - /home/hms/hms-implementation/
+        - /home/hms/hms-implementation/kanj-v101
     
 
     - name: copy id component to servers
@@ -20,5 +21,6 @@
         - {src: '/home/ansible/ops/id/', dest: '/opt/hms/conf/id/'}
         - {src: '/home/ansible/ops/conf/startid.service', dest: '/opt/hms/conf/'}
         - {src: '/home/ansible/ops/conf/startid.sh', dest: '/opt/hms/conf/'}
+        - {src: '/home/ansible/ops/kanj-v101/docker-compose.yml', dest: '/home/hms/hms-implementation/kanj-v101/'}
 
         
