@@ -59,12 +59,12 @@
 
     - name: pull images with docker-compose
       shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose pull
-      register: pull-kanj
+      register: pull
     
-    - debug: msg=={{ pull-kanj }}
+    - debug: msg=={{ pull }}
     
     - name: launch kanj with docker-compose
       shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose up -d
-      register: launch-kanj
+      register: launch
     
-    - debug: msg=={{ launch-kanj }}
+    - debug: msg=={{ launch }}
