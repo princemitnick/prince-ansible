@@ -1,0 +1,41 @@
+---
+- hosts: kanj
+  become: yes
+  tasks:
+    - name : create required folders
+      file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - /home/hms/hms-implementation/kanj-v102
+    
+    - name: copy id component to servers
+      copy: 
+        src: '/home/ansible/ops/kanj-v102/conf/id/'
+        dest: /opt/hms/conf/id/
+
+    - name: copy docker-compose file
+      copy:
+        src: /home/ansible/ops/kanj-v102/docker-compose.yml
+        dest: /home/hms/hms-implementation/kanj-v102/
+
+    - name: enable startid daemon
+      shell: systemctl daemon-reload
+    
+    # - name: enable startid daemon
+    #   shell: systemctl start startid
+
+    - name: check docker-compose version
+      shell: docker-compose --version
+
+    - name: pull images with docker-compose
+      shell: chdir=/home/hms/hms-implementation/kanj-v102/ docker-compose pull
+      register: pull-kanj
+    
+    - debug: msg=={{ pull-kanj }}
+    
+    - name: launch kanj with docker-compose
+      shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose up -d
+      register: launch-kanj
+    
+    - debug: msg=={{ launch-kanj }}
