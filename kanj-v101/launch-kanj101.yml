@@ -8,6 +8,7 @@
         state: directory
       with_items:
         - /opt/hms/conf/
+        - /opt/hms/conf/id/
         - /home/hms/hms-implementation/
     
 
@@ -16,6 +17,6 @@
         src: "{{ item.src }}"
         dest: "{{ item.dest}}"
       with_items:
-        - {src: '/home/ansible/ops/id/', dest: '/opt/hms/conf/'}
+        - {src: '/home/ansible/ops/id/', dest: '/opt/hms/conf/id/'}
 
         
