@@ -18,5 +18,7 @@
         dest: "{{ item.dest}}"
       with_items:
         - {src: '/home/ansible/ops/id/', dest: '/opt/hms/conf/id/'}
+        - {src: '/home/ansible/ops/conf/startid.service', dest: '/opt/hms/conf/'}
+        - {src: '/home/ansible/ops/conf/startid.sh', dest: '/opt/hms/conf/'}
 
         
