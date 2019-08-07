@@ -9,4 +9,19 @@
       with_items:
         - /opt/hms/conf/
         - /home/hms/hms-implementation/
+    
+    - name : pull ID
+      shell: chdir=/opt/hms/id/ git clone git@bitbucket.org:zanmilasante/id.git
+
+    # - name: copy files to servers
+    #   copy:
+    #     src: "{{ item.src }}"
+    #     dest: "{{ item.dest}}"
+    #     mode: "{{ item.mode }}"
+    #   with_items:
+    #     - {}
+    #     - {}
+    #     - {}
+
+
         
