@@ -20,9 +20,9 @@
         mode: "{{ item.mode }}"
         remote_src: yes
       with_items:
-        - {src: '/home/ansible/ops/kanj-v101/conf/id', dest: '/opt/hms/conf/id/', mode: 777}
+        - {src: '/home/ansible/ops/kanj-v101/conf/id/', dest: '/opt/hms/conf/id/', mode: 777}
         - {src: '/home/ansible/ops/kanj-v101/conf/startid.service', dest: '/etc/systemd/system/'}
-        - {src: '/home/ansible/ops/kanj-v101/conf/startid.sh', dest: '/opt/hms/conf/'}
+        - {src: '/home/ansible/ops/kanj-v101/conf/startid.sh', dest: '/opt/hms/conf/startid.sh'}
         - {src: '/home/ansible/ops/kanj-v101/docker-compose.yml', dest: '/home/hms/hms-implementation/kanj-v101/'}
         - {src: '/home/ansible/ops/kanj-v101/docker-compose.yml', dest: '/home/hms/hms-implementation/kanj-v101/'}
     
