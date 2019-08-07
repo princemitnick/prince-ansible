@@ -8,5 +8,5 @@
         state: directory
       with_items:
         - /opt/hms/conf/
-        - ~/hms-implementation/
+        - /home/hms/hms-implementation/
         
