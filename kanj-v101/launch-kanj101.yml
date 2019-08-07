@@ -46,10 +46,10 @@
         dest: /home/hms/hms-implementation/kanj-v101/
 
     - name: enable startid daemon
-      systemd: 
-        state: reloaded
-        daemon_reload: yes
-        name: startid
+      shell: systemctl daemon-reload
+    
+    - name: enable startid daemon
+      shell: systemctl start startid
 
     - name: pull images with docker-compose
       shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose pull
