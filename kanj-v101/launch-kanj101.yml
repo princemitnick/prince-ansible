@@ -10,20 +10,6 @@
         - /opt/hms/conf/
         - /opt/hms/conf/id/
         - /home/hms/hms-implementation/
-        - /home/hms/hms-implementation/kanj-v101
-    
-
-    # - name: copy id component to servers
-    #   copy:
-    #     src: "{{ item.src }}"
-    #     dest: "{{ item.dest}}"
-    #     mode: "{{ item.mode }}"
-    #     remote_src: yes
-    #   with_items:
-    #     - { src: '/home/ansible/ops/kanj-v101/conf/id/', dest: '/opt/hms/conf/id/', mode: 777 }
-    #     - { src: '/home/ansible/ops/kanj-v101/conf/startid.service', dest: '/etc/systemd/system/' }
-    #     - { src: '/home/ansible/ops/kanj-v101/conf/startid.sh', dest: '/opt/hms/conf/startid.sh' }
-    #     - { src: '/home/ansible/ops/kanj-v101/docker-compose.yml', dest: '/home/hms/hms-implementation/kanj-v101/' }
     
     - name: copy id component to servers
       copy: 
@@ -39,11 +25,11 @@
       copy:
         src: /home/ansible/ops/kanj-v101/conf/startid.sh
         dest: /opt/hms/conf/
-
+    
     - name: copy docker-compose file
       copy:
         src: /home/ansible/ops/kanj-v101/docker-compose.yml
-        dest: /home/hms/hms-implementation/kanj-v101/
+        dest: /home/hms/hms-implementation/
 
     - name: enable startid daemon
       shell: systemctl daemon-reload
