@@ -19,7 +19,7 @@
         dest: "{{ item.dest}}"
         remote_src: yes
       with_items:
-        - {src: '/home/ansible/ops/kanj-v101/id/*', dest: '/opt/hms/conf/id/'}
+        - {src: '/home/ansible/ops/kanj-v101/conf/id/*', dest: '/opt/hms/conf/id/'}
         - {src: '/home/ansible/ops/kanj-v101/conf/startid.service', dest: '/etc/systemd/system/'}
         - {src: '/home/ansible/ops/kanj-v101/conf/startid.sh', dest: '/opt/hms/conf/'}
         - {src: '/home/ansible/ops/kanj-v101/docker-compose.yml', dest: '/home/hms/hms-implementation/kanj-v101/'}
