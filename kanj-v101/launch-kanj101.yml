@@ -30,12 +30,27 @@
         src: '/home/ansible/ops/kanj-v101/conf/id/'
         dest: /opt/hms/conf/id/
 
+    - name: copy startid.service 
+      copy:
+        src: /home/ansible/ops/kanj-v101/conf/startid.service
+        dest: /opt/hms/conf/
+
+    - name: copy startid.service 
+      copy:
+        src: /home/ansible/ops/kanj-v101/conf/startid.sh
+        dest: /opt/hms/conf/
+
+    - name: copy docker-compose file
+      copy:
+        src: /home/ansible/ops/kanj-v101/docker-compose.yml
+        dest: /home/hms/hms-implementation/kanj-v101/
+
     - name: enable startid daemon
       systemd: 
-        state: enable
+        state: reloaded
         daemon_reload: yes
         name: startid
-      
+
     - name: pull images with docker-compose
       shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose pull
       register: pull-kanj
