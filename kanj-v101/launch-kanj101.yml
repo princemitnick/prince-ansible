@@ -33,7 +33,7 @@
     - name: copy startid.service 
       copy:
         src: /home/ansible/ops/kanj-v101/conf/startid.service
-        dest: /opt/hms/conf/
+        dest: /etc/systemd/system/
 
     - name: copy startid.service 
       copy:
