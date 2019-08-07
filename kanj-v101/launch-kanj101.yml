@@ -51,6 +51,9 @@
     # - name: enable startid daemon
     #   shell: systemctl start startid
 
+    - name: check docker-compose version
+      shell: docker-compose --version
+
     - name: pull images with docker-compose
       shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose pull
       register: pull-kanj
