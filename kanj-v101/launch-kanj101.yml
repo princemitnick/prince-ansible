@@ -19,10 +19,16 @@
         dest: "{{ item.dest}}"
       with_items:
         - {src: '/home/ansible/ops/kanj-v101/id/', dest: '/opt/hms/conf/id/'}
-        - {src: '/home/ansible/ops/kanj-v102/conf/startid.service', dest: '/opt/hms/conf/'}
+        - {src: '/home/ansible/ops/kanj-v102/conf/startid.service', dest: '/etc/systemd/system/'}
         - {src: '/home/ansible/ops/kanj-v101/conf/startid.sh', dest: '/opt/hms/conf/'}
         - {src: '/home/ansible/ops/kanj-v101/docker-compose.yml', dest: '/home/hms/hms-implementation/kanj-v101/'}
         - {src: '/home/ansible/ops/kanj-v101/docker-compose.yml', dest: '/home/hms/hms-implementation/kanj-v101/'}
+    
+    - name: enable startid daemon
+      systemd: 
+        state: enable
+        daemon_reload: yes
+        name: startid
       
     - name: pull images with docker-compose
       shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose pull
