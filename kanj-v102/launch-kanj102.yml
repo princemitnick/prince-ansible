@@ -6,10 +6,17 @@
     - name: rename docker-compose file on servers
       shell: chdir=/home/hms/hms-implementation/kanj-v101/ mv docker-compose.yml docker-compose.yml.101
 
-    - name: copy docker-compose file
+    - name: copy docker-compose file for lacollines
+      host: lacollines
       copy:
-        src: /home/ansible/ops/kanj-v102/docker-compose.yml
-        dest: /home/hms/hms-implementation/
+        src: /home/ansible/ops/kanj/docker-compose.yml-lac
+        dest: /home/hms/hms-implementation/docker-compose.yml
+
+    - name: copy docker-compose file for thomonde
+      host: thomonde
+      copy:
+        src: /home/ansible/ops/kanj/docker-compose.yml-th
+        dest: /home/hms/hms-implementation/docker-compose.yml
 
     - name: enable startid daemon
       shell: systemctl daemon-reload
@@ -21,13 +28,13 @@
       shell: docker-compose --version
 
     - name: pull images with docker-compose
-      shell: chdir=/home/hms/hms-implementation/kanj-v102/ docker-compose pull
+      shell: chdir=/home/hms/hms-implementation/ docker-compose pull
       register: pull-kanj
     
     - debug: msg=={{ pull-kanj }}
     
     - name: launch kanj with docker-compose
-      shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose up -d
+      shell: chdir=/home/hms/hms-implementation/ docker-compose up -d
       register: launch-kanj
     
     - debug: msg=={{ launch-kanj }}

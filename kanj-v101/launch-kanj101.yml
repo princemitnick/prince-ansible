@@ -13,23 +13,30 @@
     
     - name: copy id component to servers
       copy: 
-        src: '/home/ansible/ops/kanj-v101/conf/id/'
+        src: '/home/ansible/ops/kanj/conf/id/'
         dest: /opt/hms/conf/id/
 
     - name: copy startid.service 
       copy:
-        src: /home/ansible/ops/kanj-v101/conf/startid.service
+        src: /home/ansible/ops/kanj/conf/startid.service
         dest: /etc/systemd/system/
 
     - name: copy startid.service 
       copy:
-        src: /home/ansible/ops/kanj-v101/conf/startid.sh
+        src: /home/ansible/ops/kanj/conf/startid.sh
         dest: /opt/hms/conf/
-    
-    - name: copy docker-compose file
+        
+    - name: copy docker-compose file for lacollines
+      host: lacollines
       copy:
-        src: /home/ansible/ops/kanj-v101/docker-compose.yml
-        dest: /home/hms/hms-implementation/
+        src: /home/ansible/ops/kanj/docker-compose.yml-lac
+        dest: /home/hms/hms-implementation/docker-compose.yml
+
+    - name: copy docker-compose file for thomonde
+      host: thomonde
+      copy:
+        src: /home/ansible/ops/kanj/docker-compose.yml-th
+        dest: /home/hms/hms-implementation/docker-compose.yml
 
     - name: enable startid daemon
       shell: systemctl daemon-reload
@@ -44,13 +51,17 @@
     - debug: msg=={{ result }}
 
     - name: pull images with docker-compose
-      shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose pull
+      shell: chdir=/home/hms/hms-implementation/ docker-compose pull
       register: pull
     
     - debug: msg=={{ pull }}
     
     - name: launch kanj with docker-compose
-      shell: chdir=/home/hms/hms-implementation/kanj-v101/ docker-compose up -d
+      shell: chdir=/home/hms/hms-implementation/ docker-compose up -d
       register: launch
     
     - debug: msg=={{ launch }}
+
+    - name: start startid
+      shell: systemctl start startid
+    
