@@ -25,6 +25,8 @@
       copy:
         src: /home/ansible/ops/kanj/conf/startid.sh
         dest: /opt/hms/conf/
+        
+    - name: set permission for startid.sh
       shell: chdir=/opt/hms/conf/ chmod a+x startid.sh
 
     - name: copy docker-compose file 
