@@ -25,15 +25,15 @@
       copy:
         src: /home/ansible/ops/kanj/conf/startid.sh
         dest: /opt/hms/conf/
-        
+
     - name: copy docker-compose file for lacollines
-      host: lacollines
+      hosts: lacollines
       copy:
         src: /home/ansible/ops/kanj/docker-compose.yml-lac
         dest: /home/hms/hms-implementation/docker-compose.yml
 
     - name: copy docker-compose file for thomonde
-      host: thomonde
+      hosts: thomonde
       copy:
         src: /home/ansible/ops/kanj/docker-compose.yml-th
         dest: /home/hms/hms-implementation/docker-compose.yml
