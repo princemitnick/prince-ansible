@@ -6,16 +6,10 @@
     - name: rename docker-compose file on servers
       shell: chdir=/home/hms/hms-implementation/kanj-v101/ mv docker-compose.yml docker-compose.yml.101
 
-    - name: copy docker-compose file for lacollines
-      host: lacollines
-      copy:
-        src: /home/ansible/ops/kanj/docker-compose.yml-lac
-        dest: /home/hms/hms-implementation/docker-compose.yml
-
-    - name: copy docker-compose file for thomonde
+    - name: copy docker-compose file 
       host: thomonde
       copy:
-        src: /home/ansible/ops/kanj/docker-compose.yml-th
+        src: /home/ansible/ops/kanj/docker-compose.yml
         dest: /home/hms/hms-implementation/docker-compose.yml
 
     - name: enable startid daemon

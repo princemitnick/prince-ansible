@@ -26,18 +26,12 @@
         src: /home/ansible/ops/kanj/conf/startid.sh
         dest: /opt/hms/conf/
 
-    - name: copy docker-compose file for lacollines
-      hosts: lacollines
+    - name: copy docker-compose file 
       copy:
-        src: /home/ansible/ops/kanj/docker-compose.yml-lac
-        dest: /home/hms/hms-implementation/docker-compose.yml
-
-    - name: copy docker-compose file for thomonde
-      hosts: thomonde
-      copy:
-        src: /home/ansible/ops/kanj/docker-compose.yml-th
-        dest: /home/hms/hms-implementation/docker-compose.yml
-
+        src: /home/ansible/ops/kanj/docker-compose.yml
+        dest: /home/hms/hms-implementation/
+    
+    
     - name: enable startid daemon
       shell: systemctl daemon-reload
     
